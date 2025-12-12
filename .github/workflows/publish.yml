@@ -31,7 +31,7 @@ jobs:
 
       # --- FIREFOX UPLOAD ---
       - name: Upload to Firefox Add-ons
-        uses: wgyeib/firefox-addon-action@v1
+        uses: wdzeng/firefox-addon@v1
         with:
           # This must match the ID you put in manifest.json -> browser_specific_settings -> gecko -> id
           uuid: ${{ secrets.FIREFOX_EXTENSION_ID }} 
