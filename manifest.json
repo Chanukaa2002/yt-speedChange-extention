@@ -7,6 +7,12 @@
     "48": "icon.png",
     "128": "icon.png"
   },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "yt-speed-toggle@chanux.com",
+      "strict_min_version": "109.0"
+    }
+  },
   "content_scripts": [
     {
       "matches": ["*://*.youtube.com/*"],

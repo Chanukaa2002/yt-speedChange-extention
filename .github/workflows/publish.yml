@@ -1,0 +1,41 @@
+name: Publish Extension (Firefox Only)
+
+# Trigger the workflow when code is pushed to the 'deployment' branch
+on:
+  push:
+    branches:
+      - deployment
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Zip the file (Standard requirement)
+      # Excluding .git folder and .github workflow files to keep the zip clean
+      - name: Zip Extension
+        run: zip -r extension.zip . -x "*.git*" ".github*"
+
+      # --- CHROME UPLOAD (Commented Out) ---
+      # - name: Upload to Chrome Web Store
+      #   uses: mnao305/chrome-extension-upload@v4.0.1
+      #   with:
+      #     file-path: extension.zip
+      #     extension-id: ${{ secrets.CHROME_EXTENSION_ID }}
+      #     client-id: ${{ secrets.CHROME_CLIENT_ID }}
+      #     client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+      #     refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
+      #     publish: true 
+
+      # --- FIREFOX UPLOAD ---
+      - name: Upload to Firefox Add-ons
+        uses: wgyeib/firefox-addon-action@v1
+        with:
+          # This must match the ID you put in manifest.json -> browser_specific_settings -> gecko -> id
+          uuid: ${{ secrets.FIREFOX_EXTENSION_ID }} 
+          xpi: extension.zip
+          manifest: manifest.json
+          jwt-issuer: ${{ secrets.FIREFOX_JWT_ISSUER }}
+          jwt-secret: ${{ secrets.FIREFOX_JWT_SECRET }}
