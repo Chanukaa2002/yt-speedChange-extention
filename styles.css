@@ -1,0 +1,61 @@
+/* YouTube Video Speed Toggle Styles */
+
+.yt-speed-toggle-container {
+  display: flex;
+  align-items: center;
+  margin-right: 0px; /* YouTube controls usually have their own spacing */
+  position: relative; /* Context for absolute positioning of menu */
+  top: 1px; /* visual alignment tweak */
+}
+
+.yt-speed-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 500;
+  font-size: 100%; /* Inherit size roughly or use explicit */
+  opacity: 0.9;
+  padding: 0 10px;
+  font-family: "Roboto", "Arial", sans-serif;
+  transition: opacity 0.1s;
+  text-align: center;
+  line-height: inherit;
+  height: 50%;
+}
+
+.yt-speed-toggle-btn:hover {
+  opacity: 1;
+  color: #fff; /* Ensure it stays white */
+}
+
+.yt-speed-menu {
+  position: absolute;
+  bottom: 150%; /* Position above the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(28, 28, 28, 0.9);
+  border-radius: 2px;
+  padding: 5px 0;
+  width: 60px;
+  text-align: center;
+  z-index: 1000; /* Ensure it floats above player controls */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  display: none; /* Controlled by JS */
+}
+
+.yt-speed-menu-item {
+  padding: 3px 0;
+  color: #eee;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: "Roboto", "Arial", sans-serif;
+  transition: background-color 0.1s;
+}
+
+.yt-speed-menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Add a specific style for the active speed if needed, or just a dropdown */
