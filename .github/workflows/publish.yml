@@ -34,8 +34,7 @@ jobs:
         uses: wdzeng/firefox-addon@v1
         with:
           # This must match the ID you put in manifest.json -> browser_specific_settings -> gecko -> id
-          uuid: ${{ secrets.FIREFOX_EXTENSION_ID }} 
-          xpi: extension.zip
-          manifest: manifest.json
+          addon-guid: ${{ secrets.FIREFOX_EXTENSION_ID }} 
+          xpi-path: extension.zip
           jwt-issuer: ${{ secrets.FIREFOX_JWT_ISSUER }}
           jwt-secret: ${{ secrets.FIREFOX_JWT_SECRET }}
